@@ -1,6 +1,6 @@
 // src/components/RecentPosts.tsx
-import React from 'react';
-import { BlogPost } from '../blogPostData';
+import React from "react";
+import { BlogPost } from "../blogPostData";
 
 interface RecentPostsProps {
   blogData: BlogPost[];

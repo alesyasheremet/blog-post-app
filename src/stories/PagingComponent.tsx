@@ -1,29 +1,30 @@
-import React from 'react';
-import ReactPaginate from 'react-paginate';
-import './pagingcomponent.css';
+import React from "react";
+import ReactPaginate from "react-paginate";
+import "./pagingcomponent.css";
 
 interface PagingComponentProps {
   pageCount: number;
-  onPageChange: (selectedItem: { selected: number }) => void;
+  onPageChange: (selected: { selected: number }) => void;
 }
 
-export const PagingComponent: React.FC<PagingComponentProps> = ({ pageCount, onPageChange }) => {
+export const PagingComponent: React.FC<PagingComponentProps> = ({
+  pageCount,
+  onPageChange,
+}) => {
   return (
     <ReactPaginate
       pageCount={pageCount}
-      pageRangeDisplayed={3}
-      marginPagesDisplayed={1}
+      pageRangeDisplayed={5}
+      marginPagesDisplayed={2}
       onPageChange={onPageChange}
-      activeClassName={'item active '}
-        breakClassName={'item break-me '}
-        breakLabel={'...'}
-        containerClassName={'pagination'}
-        disabledClassName={'disabled-page'}
-        nextClassName={"item next "}
-        pageClassName={'item pagination-page '}
-        previousClassName={"item previous"}
-        />
-    
+      activeClassName={"item active "}
+      breakClassName={"item break-me "}
+      breakLabel={"..."}
+      containerClassName={"pagination"}
+      disabledClassName={"disabled-page"}
+      pageClassName={"item pagination-page "}
+      previousLabel={null}
+      nextLabel={"Volgende pagina"}
+    />
   );
 };
-

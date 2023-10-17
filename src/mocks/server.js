@@ -1,19 +1,19 @@
-const express = require('express');
+const express = require("express");
 const app = express();
 const port = 3001; // Choose an available port
 
 // Mock data
 const pages = [
   // Mock page data
-  { id: 1, title: 'Page 1' },
-  { id: 2, title: 'Page 2' },
+  { id: 1, title: "Page 1" },
+  { id: 2, title: "Page 2" },
   // Add more mock data as needed
 ];
 
 app.use(express.json());
 
 // API route to fetch pages
-app.get('/api/pages', (req, res) => {
+app.get("/api/pages", (req, res) => {
   const page = parseInt(req.query.page, 10);
   const pageSize = 10; // Adjust the page size as needed
   const startIndex = (page - 1) * pageSize;

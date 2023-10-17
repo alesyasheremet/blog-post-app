@@ -1,10 +1,10 @@
 // BlogPostSubmitForm.tsx
 
-import React, { useState } from 'react';
-import InputText from './InputText';
-import TextArea from './TextArea';
-import Dropdown from './DropDown';
-import { Button } from './Button';
+import React, { useState } from "react";
+import InputText from "./InputText";
+import TextArea from "./TextArea";
+import Dropdown from "./DropDown";
+import { Button } from "./Button";
 
 interface BlogPostSubmitFormProps {
   onSubmit: (formData: FormValues) => void;
@@ -17,16 +17,17 @@ interface FormValues {
   dropdown: string;
 }
 
-const BlogPostSubmitForm: React.FC<BlogPostSubmitFormProps> = ({ onSubmit }) => {
+const BlogPostSubmitForm: React.FC<BlogPostSubmitFormProps> = ({
+  onSubmit,
+}) => {
   const [formData, setFormData] = useState<FormValues>({
-    textField1: '',
-    textField2: '',
-    textArea: '',
-    dropdown: '',
+    textField1: "",
+    textField2: "",
+    textArea: "",
+    dropdown: "",
   });
 
-  const handleInputChange = (value: string) => void  {
-  };
+  const handleInputChange = (value: string) => void {};
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -35,12 +36,7 @@ const BlogPostSubmitForm: React.FC<BlogPostSubmitFormProps> = ({ onSubmit }) => 
 
   return (
     <form onSubmit={handleSubmit}>
-
-          
-
-          <Button  label='sdf' backgroundColor='orange' />
-         
-         
+      <Button label="sdf" backgroundColor="orange" />
     </form>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 interface BlogPostProps {
   onAddPost: (post: BlogPostData) => void;
@@ -13,13 +13,15 @@ interface BlogPostData {
 
 const CreateBlogPost: React.FC<BlogPostProps> = ({ onAddPost }) => {
   const [postData, setPostData] = useState<BlogPostData>({
-    name: '',
-    category: '',
-    image: '',
-    message: '',
+    name: "",
+    category: "",
+    image: "",
+    message: "",
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
     setPostData({ ...postData, [name]: value });
   };
@@ -27,10 +29,10 @@ const CreateBlogPost: React.FC<BlogPostProps> = ({ onAddPost }) => {
   const handleAddPost = () => {
     onAddPost(postData);
     setPostData({
-      name: '',
-      category: '',
-      image: '',
-      message: '',
+      name: "",
+      category: "",
+      image: "",
+      message: "",
     });
   };
 

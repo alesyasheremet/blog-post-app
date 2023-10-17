@@ -1,7 +1,7 @@
 // Navbar.tsx
 
-import React, { useState } from 'react';
-import './navbar.css';
+import React, { useState } from "react";
+import "./navbar.css";
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,29 +12,29 @@ const Navbar: React.FC = () => {
   };
 
   return (
-     <nav className={`navbar ${isOpen ? 'open' : ''}`}>
+    <nav className={`navbar ${isOpen ? "open" : ""} text-[18px]`}>
       <div className="navbar-toggle" onClick={toggleMenu}>
-        <div className={`bar ${isOpen ? 'open' : ''}`}></div>
-        <div className={`bar ${isOpen ? 'open' : ''}`}></div>
-        <div className={`bar ${isOpen ? 'open' : ''}`}></div>
+        <div className={`bar ${isOpen ? "open" : ""}`}></div>
+        <div className={`bar ${isOpen ? "open" : ""}`}></div>
+        <div className={`bar ${isOpen ? "open" : ""}`}></div>
       </div>
-      <ul className="navbar-menu flex bg-blue-500 text-white p-4">
-        <li className="ml-4">
+      <ul className="navbar-menu flex text-white p-4">
+        <li className="mr-4">
           <a
-            href="#"
+            href="/"
             onClick={() => setActiveItem(1)}
-            className={activeItem === 1 ? 'active' : ''}
+            className={activeItem === 1 ? "active" : ""}
           >
-            Option 1
+            Home
           </a>
         </li>
-        <li className="ml-auto">
+        <li className="mr-4">
           <a
-            href="#"
+            href="/archive"
             onClick={() => setActiveItem(2)}
-            className={activeItem === 2 ? 'active' : ''}
+            className={activeItem === 2 ? "active" : ""}
           >
-            Option 2
+            Blog
           </a>
         </li>
       </ul>

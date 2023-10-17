@@ -19,7 +19,13 @@
 }
 
 /* Rest of the CSS remains the same */
+.navbar ul{
 
+}
+
+.navbar ul li{
+  
+}
 
 .navbar-menu a {
   text-decoration: none;

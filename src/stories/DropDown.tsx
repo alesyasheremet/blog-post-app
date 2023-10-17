@@ -1,7 +1,7 @@
 // Dropdown.tsx
 
-import React from 'react';
-import './DropDown.css'; // Import your CSS file for styling
+import React from "react";
+import "./DropDown.css"; // Import your CSS file for styling
 
 interface DropdownProps {
   label: string;
@@ -9,10 +9,21 @@ interface DropdownProps {
   options: string[];
   id: string;
   name: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void;
+  onChange: (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) => void;
 }
 
-const Dropdown: React.FC<DropdownProps> = ({ label, value, options, id, name, onChange }) => {
+const Dropdown: React.FC<DropdownProps> = ({
+  label,
+  value,
+  options,
+  id,
+  name,
+  onChange,
+}) => {
   return (
     <div className="dropdown">
       <label className="dropdown-label">{label}</label>
