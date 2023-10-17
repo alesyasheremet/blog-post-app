@@ -1,0 +1,30 @@
+/* paging-component.css */
+
+/* Custom styles for the paging component */
+.paging-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.paging-button {
+  background-color: #3498db;
+  color: white;
+  padding: 8px 16px;
+  margin: 4px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.paging-button:hover {
+  background-color: #1e75a8;
+}
+
+.paging-active {
+  background-color: #1e75a8;
+}
+
+/*# sourceMappingURL=stories-PagingComponent-stories.27a2f146.chunk.css.map*/

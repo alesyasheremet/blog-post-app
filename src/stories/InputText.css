@@ -1,0 +1,16 @@
+.input-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-label {
+  font-size: 14px; /* Adjust the font size as needed */
+  margin-bottom: 6px;
+}
+
+.input-text {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+  font-size: 16px; /* Adjust the font size as needed */
+}

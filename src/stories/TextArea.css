@@ -1,0 +1,19 @@
+/* TextArea.css */
+
+.text-area {
+  display: flex;
+  flex-direction: column;
+}
+
+.text-area-label {
+  font-size: 14px; /* Adjust the font size as needed */
+  margin-bottom: 6px;
+}
+
+.text-area-input {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+  font-size: 16px; /* Adjust the font size as needed */
+  height: 150px; /* Adjust the height as needed */
+}

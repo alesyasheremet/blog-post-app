@@ -1,0 +1,10 @@
+/* Add this to your global CSS or import it in your component's CSS file */
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-header {
+  width: 100vw;
+}
