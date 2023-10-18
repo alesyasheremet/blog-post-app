@@ -10,6 +10,10 @@ interface BlogPostFormData
   image: Blob | null, 
 }
 
+export interface RecentBlogPost {
+  post: IBlogPost;
+}
+
 export interface ICategory {
   id: number;
   name: string;

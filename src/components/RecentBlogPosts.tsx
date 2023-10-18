@@ -1,6 +1,7 @@
 import React from "react";
 import { IBlogPost } from "../types/BlogPost";
-
+import { selectBlogs } from '../store/blogPostSlice';
+import { useSelector } from "react-redux";
 interface RecentBlogPostsProps {
   blogs: IBlogPost[];
 }

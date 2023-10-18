@@ -7,6 +7,9 @@ import { Button } from "../stories/Button";
 import RecentBlogPosts from "../components/RecentBlogPosts";
 import SubmitBlogPost from "../components/SubmitBlogPost";
 import { IBlogPost } from "../types/BlogPost";
+import { fetchBlogs, selectBlogs } from "../store/blogPostSlice";
+import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch } from "../hooks/hook";
 
 const defaultPosts: IBlogPost[] = [];
 const postService = new BlogPostService();
@@ -16,24 +19,17 @@ const handleCancelClick = () => {
 };
 
 export const Home: React.FC = () => {
-  const [posts, setPosts] = useState(defaultPosts);
+  const dispatch = useAppDispatch();
+//  const [posts, setPosts] = useState(defaultPosts);
+  const blogs = useSelector(selectBlogs);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const postService = new BlogPostService();
   const [page, setPage] = useState(1);
   const itemsPerPage = 4; // Set the number of items per page
-  const loadPosts = async () => {
-    try {
-      const fetchedPosts = await postService.fetchPosts(page, itemsPerPage);
-      const categories = await postService.fetchCategories();
-      setPosts([...posts, ...fetchedPosts.data]); // Append new posts to the existing list
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
   useEffect(() => {
-    loadPosts();
+    //loadPosts();
+    dispatch(fetchBlogs(page, itemsPerPage)); 
   }, [page]); // Fetch new page when page state changes
 
   const handlePageChange = (newPage: number) => {
@@ -49,7 +45,7 @@ export const Home: React.FC = () => {
         </div>
 
         <div className="sm:w-auto shadow-md h-screen relative">
-            <RecentBlogPosts blogs={posts}/>
+            <RecentBlogPosts blogs={blogs}/>
           <div className="bottom-0">
             <Button
               label="Laad meer"

@@ -1,8 +1,13 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from 'react-redux';
 import { FaCamera } from "react-icons/fa";
 import TextArea from "../stories/TextArea";
 import InputField from "../stories/InputField";
 import BlogPostCategories from "./BlogPostCategories";
+import { RootState } from "../store/store";
+import { IBlogPost, RecentBlogPost } from "../types/BlogPost";
+import { useAppDispatch } from "../hooks/hook";
+import { addBlog } from "../store/blogPostSlice";
 
 const SubmitBlogPost: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +16,10 @@ const SubmitBlogPost: React.FC = () => {
     category_id: "",
     image: null as Blob | null, // Initialize as null
   });
+
+  const [newPost, setNewPost] = useState('');
+  const posts = useSelector((state: RootState) => state.blog);
+  const dispatch = useAppDispatch();
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const imageFile =
@@ -56,8 +65,9 @@ const SubmitBlogPost: React.FC = () => {
           content: formData.content,
           category_id: formData.category_id,
           image: null,
-        };
-        //setPosts([...posts, newPost as unknown as IBlogPost]);
+        } as unknown as IBlogPost;
+        dispatch(addBlog(newPost));
+        setNewPost('');
         // Form submitted successfully, handle the response if needed
       } else {
         // Handle errors
