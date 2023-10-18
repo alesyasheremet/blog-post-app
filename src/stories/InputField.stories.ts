@@ -1,22 +1,23 @@
 import React from "react";
 import { Meta, StoryObj } from "@storybook/react";
-import { PagingComponent } from "./PagingComponent";
-import BlogPostSubmitForm from "./BlogPostSubmitForm";
+import MaterialCard from "./Card";
+import InputField from "./InputField";
 
 const meta = {
   title: "Example/Page",
-  component: BlogPostSubmitForm,
+  component: InputField,
   parameters: {},
-} satisfies Meta<typeof BlogPostSubmitForm>;
+} satisfies Meta<typeof InputField>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
-export const LoggedIn2: Story = {
+export const LoggedIn3: Story = {
   args: {
-    onSubmit: (formData) => {
-      console.log("Form data submitted:", formData);
-    },
+    label: "Field Name:",
+    value: "",
+    id: "",
+    name: "",
   },
 };

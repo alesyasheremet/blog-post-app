@@ -1,7 +1,7 @@
 import React from "react";
 import { Meta, StoryObj } from "@storybook/react";
 import MaterialCard from "./Card";
-import InputText from "./InputText";
+import InputText from "./InputField";
 import TextArea from "./TextArea";
 
 const meta = {

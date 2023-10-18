@@ -1,12 +1,12 @@
 import React from "react";
 import { Meta, StoryObj } from "@storybook/react";
-import { PagingComponent } from "./PagingComponent";
+import { Paginate } from "./Paginate";
 
 const meta = {
   title: "Example/Page",
-  component: PagingComponent,
+  component: Paginate,
   parameters: {},
-} satisfies Meta<typeof PagingComponent>;
+} satisfies Meta<typeof Paginate>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

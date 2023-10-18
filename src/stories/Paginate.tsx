@@ -1,13 +1,13 @@
 import React from "react";
 import ReactPaginate from "react-paginate";
-import "./pagingcomponent.css";
+import "./paginate.css";
 
 interface PagingComponentProps {
   pageCount: number;
   onPageChange: (selected: { selected: number }) => void;
 }
 
-export const PagingComponent: React.FC<PagingComponentProps> = ({
+export const Paginate: React.FC<PagingComponentProps> = ({
   pageCount,
   onPageChange,
 }) => {

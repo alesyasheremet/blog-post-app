@@ -1,62 +1,16 @@
-import React, { useEffect, useState } from "react";
-
-import { Header } from "./Header";
-import "./page.css";
-import GridComponent from "./GridWithCards";
-import {
-  BlogPostService,
-  IBlogPost,
-  ICategory,
-  IResponse,
-} from "../services/BlogPostService";
-import { Button } from "./Button";
-import BlogPostSubmitForm from "./BlogPostSubmitForm";
-import InputText from "./InputText";
-import Dropdown from "./DropDown";
-import TextArea from "./TextArea";
+import React, { useState } from "react";
 import { FaCamera } from "react-icons/fa";
+import TextArea from "../stories/TextArea";
+import InputField from "../stories/InputField";
+import BlogPostCategories from "./BlogPostCategories";
 
-const defaultPosts: IBlogPost[] = [];
-const defaultCategories: ICategory[] = [];
-const postService = new BlogPostService();
-
-const handleCancelClick = () => {
-  postService.cancelRequest();
-};
-
-export const Page: React.FC = () => {
+const SubmitBlogPost: React.FC = () => {
   const [formData, setFormData] = useState({
     title: "",
     content: "",
     category_id: "",
     image: null as Blob | null, // Initialize as null
   });
-
-  const [posts, setPosts] = useState(defaultPosts);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
-  const [categories, setCategories] = useState(defaultCategories);
-  const postService = new BlogPostService();
-  const [page, setPage] = useState(1);
-  const itemsPerPage = 4; // Set the number of items per page
-  const loadPosts = async () => {
-    try {
-      const fetchedPosts = await postService.fetchPosts(page, itemsPerPage);
-      const categories = await postService.fetchCategories();
-      setCategories(categories);
-      setPosts([...posts, ...fetchedPosts.data]); // Append new posts to the existing list
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  useEffect(() => {
-    loadPosts();
-  }, [page]); // Fetch new page when page state changes
-
-  const handlePageChange = (newPage: number) => {
-    setPage(newPage);
-  };
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const imageFile =
@@ -67,6 +21,7 @@ export const Page: React.FC = () => {
       setFormData({ ...formData, image: imageFile });
     }
   };
+
 
   const handleInputChange = (
     e: React.ChangeEvent<
@@ -102,7 +57,7 @@ export const Page: React.FC = () => {
           category_id: formData.category_id,
           image: null,
         };
-        setPosts([...posts, newPost as unknown as IBlogPost]);
+        //setPosts([...posts, newPost as unknown as IBlogPost]);
         // Form submitted successfully, handle the response if needed
       } else {
         // Handle errors
@@ -113,12 +68,10 @@ export const Page: React.FC = () => {
   };
 
   return (
-    <div className="p-6">
-      <div className="flex flex-col sm:flex-row gap-6 justify-between">
-        <div className="min-w-[450p] shadow-md p-6 h-screen calc(100vh - 20%)">
+<div className="min-w-[450p] shadow-md p-6 h-screen relative">
           <form onSubmit={handleSubmit}>
             <div className="flex-grow">
-              <InputText
+              <InputField
                 label="Berichtnaam"
                 value={formData.title}
                 onChange={handleInputChange}
@@ -129,10 +82,9 @@ export const Page: React.FC = () => {
                 <label htmlFor="image">Image:</label>
                 <div className="text-gray-500">
                   <label htmlFor="image" className="cursor-pointer">
-                    <FaCamera /> Upload Image
+                    <FaCamera /> 
                   </label>
-                  <span className="hidden inline">Upload Image</span>
-                  <span className="hidden">Choose File</span>
+                  <span className="hidden">Geen bestand gekozen</span>
                   <input
                     type="file"
                     id="image"
@@ -151,14 +103,8 @@ export const Page: React.FC = () => {
                   key={formData.category_id}
                   onChange={handleInputChange}
                   className="border border-gray-300 p-2 text-gray-600 text-sm italic placeholder-grey-500 bg-gray-100"
-                  placeholder="--"
                 >
-                  <option value="">Geen categorie</option>
-                  {categories.map((category) => (
-                    <option key={category.id} value={category.id}>
-                      {category.name}
-                    </option>
-                  ))}
+                  <BlogPostCategories />
                 </select>
               </div>
               <TextArea
@@ -169,33 +115,12 @@ export const Page: React.FC = () => {
                 name="content"
               />
             </div>
-            <div className="self-end">
-              <button type="submit">Submit</button>
-            </div>
+            
+              <button type="submit" className="bottom-0 absolute">Submit</button>
+            
           </form>
         </div>
-
-        <div className="sm:w-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6">
-            {posts.map((item: any) => (
-              <div className="shadow-md">
-                <img className="w-full" src="/assets/blogpost.png" />
-                <div className="p-4">
-                  <h1 className="text-3xl font-bold">{item.title}</h1>
-                  <div className="p-4"></div>
-                  <div className="text-xs">{item.content}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="">
-            <Button
-              label="Laad meer"
-              onClick={() => handlePageChange(page + 1)}
-            />
-          </div>
-        </div>
-      </div>
-    </div>
   );
 };
+
+export default SubmitBlogPost;

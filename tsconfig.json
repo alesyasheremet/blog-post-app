@@ -1,5 +1,4 @@
-{
-    "compilerOptions": {
+{"compilerOptions": {
     "target": "es2020",
     "lib": [
       "dom",
@@ -25,3 +24,4 @@
   ],
   "extends":["eslint:recommended", "plugin:react/recommended", "prettier"]
 }
+

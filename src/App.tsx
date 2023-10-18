@@ -1,14 +1,11 @@
 import React from "react";
 import logo from "./logo.svg";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
-import RecentPosts from "./components/RecentPosts";
-import ArchivePosts from "./components/ArchivePosts";
-import blogData from "./blogPostData";
 import "./App.css";
-import CreateBlogPost from "./components/CreateBlogPost";
 import { Header } from "./stories/Header";
-import { Page } from "./stories/Page";
 import Navbar from "./stories/NavBar";
+import Blog from "./pages/Blog";
+import Home from "./pages/Home";
 
 const App: React.FC = () => {
   return (
@@ -17,12 +14,8 @@ const App: React.FC = () => {
       <Navbar />
       <Router>
         <Routes>
-          <Route path="/archive" element={<ArchivePosts items={[]} />} />
-          <Route path="/" element={<Page />} />
-          <Route
-            path="/create"
-            element={<CreateBlogPost onAddPost={(p) => p} />}
-          />
+          <Route path="/archive/page/:page" element={<Blog />} />
+          <Route path="/" element={<Home />} />
         </Routes>
       </Router>
     </>

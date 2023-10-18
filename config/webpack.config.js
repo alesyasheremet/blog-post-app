@@ -28,6 +28,9 @@ const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin'
 
 const createEnvironmentHash = require('./webpack/persistentCache/createEnvironmentHash');
 
+const dotenv = require('dotenv').config({ path: __dirname + '/.env' })
+const isDevelopment = process.env.NODE_ENV !== 'production'
+
 // Source maps are resource heavy and can cause out of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
 
@@ -311,7 +314,8 @@ module.exports = function (webpackEnv) {
       , "querystring": require.resolve("querystring-es3")
       , "crypto": require.resolve("crypto-browserify")
       , "stream": require.resolve("stream-browserify")
-      , "zlib": require.resolve("browserify-zlib") },
+      , "zlib": require.resolve("browserify-zlib")
+      , "os": require.resolve("os-browserify/browser")},
       extensions: paths.moduleFileExtensions
         .map(ext => `.${ext}`)
         .filter(ext => useTypeScript || !ext.includes('ts')),

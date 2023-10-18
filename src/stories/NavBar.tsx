@@ -12,7 +12,7 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className={`navbar ${isOpen ? "open" : ""} text-[18px]`}>
+    <nav className={`navbar ${isOpen ? "open" : ""} text-[18px] fixed`}>
       <div className="navbar-toggle" onClick={toggleMenu}>
         <div className={`bar ${isOpen ? "open" : ""}`}></div>
         <div className={`bar ${isOpen ? "open" : ""}`}></div>
@@ -30,7 +30,7 @@ const Navbar: React.FC = () => {
         </li>
         <li className="mr-4">
           <a
-            href="/archive"
+            href="/archive/page/1"
             onClick={() => setActiveItem(2)}
             className={activeItem === 2 ? "active" : ""}
           >

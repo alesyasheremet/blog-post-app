@@ -1,7 +1,6 @@
 // InputText.tsx
 
 import React from "react";
-import "./InputText.css"; // Import your CSS file for styling
 
 interface InputTextProps {
   label: string;
@@ -15,7 +14,7 @@ interface InputTextProps {
   ) => void;
 }
 
-const InputText: React.FC<InputTextProps> = ({
+const InputField: React.FC<InputTextProps> = ({
   label,
   value,
   id,
@@ -38,4 +37,4 @@ const InputText: React.FC<InputTextProps> = ({
   );
 };
 
-export default InputText;
+export default InputField;
