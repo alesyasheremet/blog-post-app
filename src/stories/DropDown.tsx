@@ -30,20 +30,20 @@ const Dropdown: React.FC<DropdownProps> = ({
   key,
   onChange,
 }) => {
-  return (
+   return (
     <div className="dropdown">
-      <label className="dropdown-label">{label}</label>
+      <label className="py-3">{label}</label>
+<div></div>
       <select
         defaultValue={value}
         onChange={(e) => onChange(e)}
         id={id}
         name={name}
-        key={key}
-        className="border border-gray-300 p-2 text-gray-600 text-sm italic placeholder-grey-500 bg-gray-100"
+        className="w-full border border-gray-300 p-2 text-gray-600 text-sm italic placeholder-grey-500 bg-gray-100"
       >
         <option value="">Geen</option>
         {options.map((option) => (
-          <option key={option.id} value={option.name}>
+          <option key={option.id} value={option.id}>
             {option.name}
           </option>
         ))}

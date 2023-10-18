@@ -12,7 +12,7 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className={`navbar ${isOpen ? "open" : ""} text-[18px] fixed`}>
+    <nav className={`navbar ${isOpen ? "open" : ""} text-[18px]`}>
       <div className="navbar-toggle" onClick={toggleMenu}>
         <div className={`bar ${isOpen ? "open" : ""}`}></div>
         <div className={`bar ${isOpen ? "open" : ""}`}></div>
@@ -38,7 +38,7 @@ const Navbar: React.FC = () => {
           </a>
         </li>
       </ul>
-    </nav>
+          </nav>
   );
 };
 

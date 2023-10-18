@@ -22,15 +22,16 @@ const InputField: React.FC<InputTextProps> = ({
   onChange,
 }) => {
   return (
-    <div className="input-field">
-      <label className="input-label">{label}</label>
+    <div>
+      <label className="py-3">{label}</label>
+      <div></div>
       <input
         type="text"
         defaultValue={value}
         id={id}
         name={name}
         onChange={(e) => onChange(e)}
-        className="border border-gray-300 p-2 text-gray-600 text-sm italic placeholder-grey-500 bg-gray-100"
+        className="w-full border border-gray-300 p-2 text-gray-600 text-sm italic placeholder-grey-500 bg-gray-100"
         placeholder="Geen titel"
       />
     </div>

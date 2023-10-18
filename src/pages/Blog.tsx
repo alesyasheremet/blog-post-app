@@ -47,7 +47,7 @@ const Blog: React.FC<{}> = ({ }) => {
 
   return (
     <div className="p-10">
-      <div className="grid md:grid-cols-4 gap-6 p-6">
+      <div className="grid md:grid-cols-4 gap-6 p-6 relative">
         <DisplayBlogPosts blogs={posts}/>
       </div>
       <Paginate 

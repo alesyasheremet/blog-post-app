@@ -23,17 +23,17 @@ const TextArea: React.FC<TextAreaProps> = ({
   onChange,
 }) => {
   return (
-    <div className="text-area">
+    <>
       <label>{label}</label>
+      <div></div>
       <textarea
         defaultValue={value}
         onChange={(e) => onChange(e)}
-        className="border border-gray-300 p-2 text-gray-600 text-sm italic bg-gray-100"
+        className="w-full h-[214px] border border-gray-300 p-2 text-gray-600 text-sm italic bg-gray-100"
         id={id}
         name={name}
-        placeholder=""
       />
-    </div>
+    </>
   );
 };
 

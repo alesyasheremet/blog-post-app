@@ -104,20 +104,27 @@ const SubmitBlogPost: React.FC = () => {
                 name="title"
               />
               <div>
-                <label htmlFor="image">Image:</label>
-                <div className="text-gray-500">
-                  <label htmlFor="image" className="cursor-pointer">
-                    <FaCamera /> 
+                <label htmlFor="image" className="py-3">Header afbeelding</label>
+                   <label htmlFor="image" className="cursor-pointer">
+                    <div className="w-full flex">
+                    <FaCamera className="h-[13px] w-[10%]"/> 
+                    <div
+  data-te-chip-init
+  data-te-ripple-init
+  className="w-[30%] mr-4 flex h-[20px] cursor-pointer inline-block min-w-max cursor-pointer items-center justify-between rounded-[16px] bg-[#eceff1] px-[12px] py-0 text-[13px] font-normal normal-case leading-loose text-[#4f4f4f] shadow-none transition-[opacity] duration-300 ease-linear hover:!shadow-none active:bg-[#cacfd1] dark:bg-neutral-600 dark:text-neutral-200"
+  data-te-close="true">
+  Kies bestand
+</div>
+</div>
                   </label>
-                  <span className="hidden">Geen bestand gekozen</span>
+                  
                   <input
                     type="file"
                     id="image"
                     name="image"
                     onChange={handleImageUpload}
-                    className="inset-0"
+                    className="opacity-0"
                   />
-                </div>
               </div>
                 <Dropdown label="Categorie" id="category_id"
                   name="category_id"
@@ -133,7 +140,7 @@ const SubmitBlogPost: React.FC = () => {
                 name="content"
               />
               <div className="flex justify-center items-center">
-              <button type="submit" className="bottom-0 absolute bg-orange-500 text-white py-2 px-4 rounded-full hover:bg-orange-600 focus:outline-none focus:ring focus:ring-orange-300">Submit</button>
+              <button type="submit" className="font-bold bottom-0 absolute bg-orange-500 text-white py-2 px-4 rounded-full hover:bg-orange-600 focus:outline-none focus:ring focus:ring-orange-300 min-w-[30%]">Bericht aanmaken</button>
               </div>
           </form>
         </>

@@ -33,6 +33,7 @@ export const Home: React.FC = () => {
   };
   
   return (
+    <>
     <div className="p-6">
       <div className="flex flex-col sm:flex-row gap-6">
         <div className="min-w-[40%] shadow-md p-6 relative">
@@ -44,12 +45,16 @@ export const Home: React.FC = () => {
             
             </div>
             <div className="flex justify-center items-center">
-            <button type="button" className="bottom-0 static bg-orange-500 text-white py-2 p-4 rounded-full hover:bg-orange-600 focus:outline-none focus:ring focus:ring-orange-300" onClick={() => handlePageChange(page + 1)}>Laad meer</button>
+            <button type="button" className="font-bold bottom-0 static bg-orange-500 text-white py-2 p-4 rounded-full hover:bg-orange-600 focus:outline-none focus:ring focus:ring-orange-300 min-w-[20%]" onClick={() => handlePageChange(page + 1)}>Laad meer</button>
             </div>
         </div>
         
       </div>
     </div>
+    <footer className="fixed bottom-0 w-full bg-[#262626] p-4 text-white text-center">
+    &copy; Copyright - Social Brothers 2023
+  </footer>
+  </>
   );
 };
 
