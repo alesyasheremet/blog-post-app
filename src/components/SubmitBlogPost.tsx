@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { FaCamera } from "react-icons/fa";
 import TextArea from "../stories/TextArea";
 import InputField from "../stories/InputField";
-import BlogPostCategories from "./BlogPostCategories";
-import { RootState } from "../store/store";
-import { IBlogPost, RecentBlogPost } from "../types/BlogPost";
+import { IBlogPost, ICategory } from "../types/BlogPost";
 import { useAppDispatch } from "../hooks/hook";
 import { addBlog } from "../store/blogPostSlice";
+import Dropdown, { DropDownOptions } from "../stories/DropDown";
+import { BlogPostService } from "../services/BlogPostService";
+
+const defaultCategories: ICategory[] = [];
 
 const SubmitBlogPost: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -17,9 +19,23 @@ const SubmitBlogPost: React.FC = () => {
     image: null as Blob | null, // Initialize as null
   });
 
+  const postService = new BlogPostService();
   const [newPost, setNewPost] = useState('');
-  const posts = useSelector((state: RootState) => state.blog);
   const dispatch = useAppDispatch();
+  const [categories, setCategories] = useState(defaultCategories);
+  const dropdownOptions: DropDownOptions[] = [];
+  const loadCategories = async () => {
+    try {
+      const categories = await postService.fetchCategories();
+      setCategories(categories);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    loadCategories();
+  }, []); 
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const imageFile =
@@ -78,9 +94,8 @@ const SubmitBlogPost: React.FC = () => {
   };
 
   return (
-<div className="min-w-[450p] shadow-md p-6 h-screen relative">
+<>
           <form onSubmit={handleSubmit}>
-            <div className="flex-grow">
               <InputField
                 label="Berichtnaam"
                 value={formData.title}
@@ -104,19 +119,12 @@ const SubmitBlogPost: React.FC = () => {
                   />
                 </div>
               </div>
-              <label htmlFor="category">Category:</label>
-              <div className="text-gray-500">
-                <select
-                  id="category_id"
+                <Dropdown label="Categorie" id="category_id"
                   name="category_id"
                   value={formData.category_id}
                   key={formData.category_id}
                   onChange={handleInputChange}
-                  className="border border-gray-300 p-2 text-gray-600 text-sm italic placeholder-grey-500 bg-gray-100"
-                >
-                  <BlogPostCategories />
-                </select>
-              </div>
+                  options={categories as DropDownOptions[]}/>
               <TextArea
                 value={formData.content}
                 label="Bericht"
@@ -124,12 +132,11 @@ const SubmitBlogPost: React.FC = () => {
                 id="content"
                 name="content"
               />
-            </div>
-            
-              <button type="submit" className="bottom-0 absolute">Submit</button>
-            
+              <div className="flex justify-center items-center">
+              <button type="submit" className="bottom-0 absolute bg-orange-500 text-white py-2 px-4 rounded-full hover:bg-orange-600 focus:outline-none focus:ring focus:ring-orange-300">Submit</button>
+              </div>
           </form>
-        </div>
+        </>
   );
 };
 

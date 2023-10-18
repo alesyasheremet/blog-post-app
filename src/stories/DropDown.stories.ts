@@ -19,8 +19,9 @@ export const LoggedIn3: Story = {
   args: {
     label: "Field Name:",
     value: "",
-    options: ["d"],
+    options: [{id: 1, name: "Sport" }],
     id: "",
     name: "",
+    key: ""
   },
 };

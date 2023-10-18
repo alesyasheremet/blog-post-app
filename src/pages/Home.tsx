@@ -3,15 +3,12 @@ import React, { useEffect, useState } from "react";
 import {
   BlogPostService,
 } from "../services/BlogPostService";
-import { Button } from "../stories/Button";
-import RecentBlogPosts from "../components/RecentBlogPosts";
 import SubmitBlogPost from "../components/SubmitBlogPost";
-import { IBlogPost } from "../types/BlogPost";
 import { fetchBlogs, selectBlogs } from "../store/blogPostSlice";
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useAppDispatch } from "../hooks/hook";
+import DisplayBlogPosts from "../components/DisplayBlogPosts";
 
-const defaultPosts: IBlogPost[] = [];
 const postService = new BlogPostService();
 
 const handleCancelClick = () => {
@@ -28,7 +25,6 @@ export const Home: React.FC = () => {
   const itemsPerPage = 4; // Set the number of items per page
 
   useEffect(() => {
-    //loadPosts();
     dispatch(fetchBlogs(page, itemsPerPage)); 
   }, [page]); // Fetch new page when page state changes
 
@@ -36,23 +32,22 @@ export const Home: React.FC = () => {
     setPage(newPage);
   };
   
-
   return (
     <div className="p-6">
       <div className="flex flex-col sm:flex-row gap-6">
-        <div className="min-w-[450p] shadow-md p-6 h-screen relative">
+        <div className="min-w-[40%] shadow-md p-6 relative">
           <SubmitBlogPost></SubmitBlogPost>
         </div>
-
-        <div className="sm:w-auto shadow-md h-screen relative">
-            <RecentBlogPosts blogs={blogs}/>
-          <div className="bottom-0">
-            <Button
-              label="Laad meer"
-              onClick={() => handlePageChange(page + 1)}
-            />
-          </div>
+        <div className="sm:w-auto shadow-md relative">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6">
+            <DisplayBlogPosts blogs={blogs}/>
+            
+            </div>
+            <div className="flex justify-center items-center">
+            <button type="button" className="bottom-0 static bg-orange-500 text-white py-2 p-4 rounded-full hover:bg-orange-600 focus:outline-none focus:ring focus:ring-orange-300" onClick={() => handlePageChange(page + 1)}>Laad meer</button>
+            </div>
         </div>
+        
       </div>
     </div>
   );

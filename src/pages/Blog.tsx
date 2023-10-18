@@ -5,6 +5,8 @@ import {
 import { Paginate } from "../stories/Paginate";
 import { useNavigate, useParams } from 'react-router-dom';
 import { IBlogPost } from "../types/BlogPost";
+import RecentBlogPosts from "../components/DisplayBlogPosts";
+import DisplayBlogPosts from "../components/DisplayBlogPosts";
 
 const defaultPosts: IBlogPost[] = [];
 
@@ -45,16 +47,8 @@ const Blog: React.FC<{}> = ({ }) => {
 
   return (
     <div className="p-10">
-      <div className="grid md:grid-cols-4 gap-6 p-6 mx-auto w-88">
-        {posts.map((item: any) => (
-          <div className="shadow-md" key={item.id}>
-            <img className="w-full" src="/assets/blogpost.png" />
-            <div className="p-4">
-              <h1 className="text-3xl">{item.title}</h1>
-              <p>{item.content}</p>
-            </div>
-          </div>
-        ))}
+      <div className="grid md:grid-cols-4 gap-6 p-6">
+        <DisplayBlogPosts blogs={posts}/>
       </div>
       <Paginate 
         onPageChange={(e) => handlePageChange(e)}
