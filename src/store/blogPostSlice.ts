@@ -3,8 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppDispatch, RootState } from './store'; // Import the RootState type
 import { IBlogPost } from '../types/BlogPost';
 import { BlogPostService } from '../services/BlogPostService';
-import { ThunkAction } from 'redux-thunk'; // Import ThunkAction type
-import { Action} from 'redux'
+
 interface BlogState {
   blogs: IBlogPost[];
 }
