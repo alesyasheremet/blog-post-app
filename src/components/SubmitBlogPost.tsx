@@ -65,7 +65,7 @@ const SubmitBlogPost: React.FC = () => {
     formDataToSend.append("image", formData.image as Blob);
     try {
       const response = await fetch(
-        "https://frontend-case-api.sbdev.nl/api/posts",
+        `${process.env.API_URL}/api/posts`,
         {
           method: "POST",
           headers: {
