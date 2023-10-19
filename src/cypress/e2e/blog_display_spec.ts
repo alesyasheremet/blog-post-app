@@ -1,5 +1,5 @@
 /*
-describe('Blog Display Component', () => {
+describe('Blog Display Archive', () => {
   it('should display a list of blog posts', () => {
     cy.visit('/blog'); // Adjust the URL to match your app's route
 
@@ -14,6 +14,6 @@ describe('Blog Display Component', () => {
     cy.get('.blog-post:first').click();
 
     // Add assertions for the behavior when a blog post is clicked
-    cy.url().should('include', '/blog/posts/1'); // Example assertion for navigation
+    cy.url().should('include', '/blog/pages/1'); // Example assertion for navigation
   });
 });*/

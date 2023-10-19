@@ -15,6 +15,6 @@ type Story = StoryObj<typeof meta>;
 export const Display: Story = {
   args: {
     title: "Header",
-    content: "text"
+    content: "text",
   },
 };

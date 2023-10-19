@@ -2,12 +2,11 @@ interface SubmitBlogPostProps {
   formData: BlogPostFormData;
 }
 
-interface BlogPostFormData
-{
-  title: string,
-  content: string,
-  category_id: string,
-  image: Blob | null, 
+interface BlogPostFormData {
+  title: string;
+  content: string;
+  category_id: string;
+  image: Blob | null;
 }
 
 export interface RecentBlogPost {

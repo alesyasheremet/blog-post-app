@@ -7,11 +7,11 @@ interface RecentBlogPostsProps {
 
 const DisplayBlogPosts: React.FC<RecentBlogPostsProps> = ({ blogs }) => {
   return (
-<>
-{blogs.map((item: any) => (
-  <Card title={item.title} content={item.content}/>
-            ))}
-  </>  
+    <>
+      {blogs.map((item: any) => (
+        <Card title={item.title} content={item.content} />
+      ))}
+    </>
   );
 };
 

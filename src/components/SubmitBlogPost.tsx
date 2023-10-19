@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from "react-redux";
 import { FaCamera } from "react-icons/fa";
 import TextArea from "../stories/TextArea";
 import InputField from "../stories/InputField";
@@ -20,7 +20,7 @@ const SubmitBlogPost: React.FC = () => {
   });
 
   const postService = new BlogPostService();
-  const [newPost, setNewPost] = useState('');
+  const [newPost, setNewPost] = useState("");
   const dispatch = useAppDispatch();
   const [categories, setCategories] = useState(defaultCategories);
   const dropdownOptions: DropDownOptions[] = [];
@@ -35,7 +35,7 @@ const SubmitBlogPost: React.FC = () => {
 
   useEffect(() => {
     loadCategories();
-  }, []); 
+  }, []);
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const imageFile =
@@ -46,7 +46,6 @@ const SubmitBlogPost: React.FC = () => {
       setFormData({ ...formData, image: imageFile });
     }
   };
-
 
   const handleInputChange = (
     e: React.ChangeEvent<
@@ -83,7 +82,7 @@ const SubmitBlogPost: React.FC = () => {
           image: null,
         } as unknown as IBlogPost;
         dispatch(addBlog(newPost));
-        setNewPost('');
+        setNewPost("");
         // Form submitted successfully, handle the response if needed
       } else {
         // Handle errors
@@ -94,56 +93,67 @@ const SubmitBlogPost: React.FC = () => {
   };
 
   return (
-<>
-          <form onSubmit={handleSubmit}>
-              <InputField
-                label="Berichtnaam"
-                value={formData.title}
-                onChange={handleInputChange}
-                id="title"
-                name="title"
-              />
-              <div>
-                <label htmlFor="image" className="py-3">Header afbeelding</label>
-                   <label htmlFor="image" className="cursor-pointer">
-                    <div className="w-full flex">
-                    <FaCamera className="h-[13px] w-[10%]"/> 
-                    <div
-  data-te-chip-init
-  data-te-ripple-init
-  className="w-[30%] mr-4 flex h-[20px] cursor-pointer inline-block min-w-max cursor-pointer items-center justify-between rounded-[16px] bg-[#eceff1] px-[12px] py-0 text-[13px] font-normal normal-case leading-loose text-[#4f4f4f] shadow-none transition-[opacity] duration-300 ease-linear hover:!shadow-none active:bg-[#cacfd1] dark:bg-neutral-600 dark:text-neutral-200"
-  data-te-close="true">
-  Kies bestand
-</div>
-</div>
-                  </label>
-                  
-                  <input
-                    type="file"
-                    id="image"
-                    name="image"
-                    onChange={handleImageUpload}
-                    className="opacity-0"
-                  />
+    <>
+      <form onSubmit={handleSubmit}>
+        <InputField
+          label="Berichtnaam"
+          value={formData.title}
+          onChange={handleInputChange}
+          id="title"
+          name="title"
+        />
+        <div>
+          <label htmlFor="image" className="py-3">
+            Header afbeelding
+          </label>
+          <label htmlFor="image" className="cursor-pointer">
+            <div className="w-full flex">
+              <FaCamera className="h-[13px] w-[10%]" />
+              <div
+                data-te-chip-init
+                data-te-ripple-init
+                className="w-[30%] mr-4 flex h-[20px] cursor-pointer inline-block min-w-max cursor-pointer items-center justify-between rounded-[16px] bg-[#eceff1] px-[12px] py-0 text-[13px] font-normal normal-case leading-loose text-[#4f4f4f] shadow-none transition-[opacity] duration-300 ease-linear hover:!shadow-none active:bg-[#cacfd1] dark:bg-neutral-600 dark:text-neutral-200"
+                data-te-close="true"
+              >
+                Kies bestand
               </div>
-                <Dropdown label="Categorie" id="category_id"
-                  name="category_id"
-                  value={formData.category_id}
-                  key={formData.category_id}
-                  onChange={handleInputChange}
-                  options={categories as DropDownOptions[]}/>
-              <TextArea
-                value={formData.content}
-                label="Bericht"
-                onChange={handleInputChange}
-                id="content"
-                name="content"
-              />
-              <div className="flex justify-center items-center">
-              <button type="submit" className="font-bold bottom-0 absolute bg-orange-500 text-white py-2 px-4 rounded-full hover:bg-orange-600 focus:outline-none focus:ring focus:ring-orange-300 min-w-[30%]">Bericht aanmaken</button>
-              </div>
-          </form>
-        </>
+            </div>
+          </label>
+
+          <input
+            type="file"
+            id="image"
+            name="image"
+            onChange={handleImageUpload}
+            className="opacity-0"
+          />
+        </div>
+        <Dropdown
+          label="Categorie"
+          id="category_id"
+          name="category_id"
+          value={formData.category_id}
+          key={formData.category_id}
+          onChange={handleInputChange}
+          options={categories as DropDownOptions[]}
+        />
+        <TextArea
+          value={formData.content}
+          label="Bericht"
+          onChange={handleInputChange}
+          id="content"
+          name="content"
+        />
+        <div className="flex justify-center items-center">
+          <button
+            type="submit"
+            className="font-bold bottom-0 absolute bg-[#E95E30] text-white py-2 px-4 rounded-full focus:outline-none  min-w-[30%]"
+          >
+            Bericht aanmaken
+          </button>
+        </div>
+      </form>
+    </>
   );
 };
 

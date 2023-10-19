@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from "react";
-import {
-  BlogPostService,
-} from "../services/BlogPostService";
+import { BlogPostService } from "../services/BlogPostService";
 import { Paginate } from "../stories/Paginate";
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from "react-router-dom";
 import { IBlogPost } from "../types/BlogPost";
 import RecentBlogPosts from "../components/DisplayBlogPosts";
 import DisplayBlogPosts from "../components/DisplayBlogPosts";
 
 const defaultPosts: IBlogPost[] = [];
 
-
-const Blog: React.FC<{}> = ({ }) => {
+const Blog: React.FC<{}> = ({}) => {
   const [posts, setPosts] = useState(defaultPosts);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -48,9 +45,9 @@ const Blog: React.FC<{}> = ({ }) => {
   return (
     <div className="p-10">
       <div className="grid md:grid-cols-4 gap-6 p-6 relative">
-        <DisplayBlogPosts blogs={posts}/>
+        <DisplayBlogPosts blogs={posts} />
       </div>
-      <Paginate 
+      <Paginate
         onPageChange={(e) => handlePageChange(e)}
         pageCount={totalPages}
       />

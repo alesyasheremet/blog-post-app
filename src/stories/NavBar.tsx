@@ -19,7 +19,7 @@ const Navbar: React.FC = () => {
         <div className={`bar ${isOpen ? "open" : ""}`}></div>
       </div>
       <ul className="navbar-menu flex text-white p-4">
-        <li className="mr-4">
+        <li className="mr-4 nav-item">
           <a
             href="/"
             onClick={() => setActiveItem(1)}
@@ -38,7 +38,7 @@ const Navbar: React.FC = () => {
           </a>
         </li>
       </ul>
-          </nav>
+    </nav>
   );
 };
 

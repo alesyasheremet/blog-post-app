@@ -3,8 +3,6 @@
 import axios, { CancelTokenSource } from "axios";
 import { ICategory, IResponse } from "../types/BlogPost";
 
-
-
 export class BlogPostService {
   private cancelTokenSource: CancelTokenSource;
 
@@ -13,7 +11,7 @@ export class BlogPostService {
   }
 
   public async fetchPosts(page: number, perPage: number): Promise<IResponse> {
-    console.log(process.env.NODE_ENV)     
+    console.log(process.env.NODE_ENV);
     const token = "pj11daaQRz7zUIH56B9Z";
     var headers = {
       key: token,
@@ -38,7 +36,7 @@ export class BlogPostService {
   }
 
   public async fetchCategories(): Promise<ICategory[]> {
-    console.log(process.env.NODE_ENV)     
+    console.log(process.env.NODE_ENV);
     const token = "pj11daaQRz7zUIH56B9Z";
     var headers = {
       key: token,

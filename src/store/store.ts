@@ -1,6 +1,6 @@
 // store.ts
-import { configureStore } from '@reduxjs/toolkit';
-import blogReducer from './blogPostSlice';
+import { configureStore } from "@reduxjs/toolkit";
+import blogReducer from "./blogPostSlice";
 
 const store = configureStore({
   reducer: {

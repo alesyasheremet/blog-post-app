@@ -2,9 +2,9 @@
 
 import React from "react";
 
-export interface DropDownOptions{
-  id: number,
-  name: string
+export interface DropDownOptions {
+  id: number;
+  name: string;
 }
 
 interface DropdownProps {
@@ -30,10 +30,10 @@ const Dropdown: React.FC<DropdownProps> = ({
   key,
   onChange,
 }) => {
-   return (
+  return (
     <div className="dropdown">
       <label className="py-3">{label}</label>
-<div></div>
+      <div></div>
       <select
         defaultValue={value}
         onChange={(e) => onChange(e)}

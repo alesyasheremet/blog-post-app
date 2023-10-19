@@ -11,15 +11,19 @@ import { Footer } from "./stories/Footer";
 const App: React.FC = () => {
   return (
     <>
-      <Header />
-      <Navbar />
-      <Router>
-        <Routes>
-          <Route path="/archive/page/:page" element={<Blog />} />
-          <Route path="/" element={<Home />} />
-        </Routes>
-      </Router>
-      <Footer/>
+      <div className="page-container">
+        <div id="content-wrap">
+          <Header />
+          <Navbar />
+          <Router>
+            <Routes>
+              <Route path="/archive/page/:page" element={<Blog />} />
+              <Route path="/" element={<Home />} />
+            </Routes>
+          </Router>
+        </div>
+      </div>
+      <Footer />
     </>
   );
 };
